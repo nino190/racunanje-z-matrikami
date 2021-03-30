@@ -1,4 +1,4 @@
-from racunanje import Matrika, Operacije
+from racunanje import Matrika
 
 class VhodnaMatrika():
     

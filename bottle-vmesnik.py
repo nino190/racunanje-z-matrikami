@@ -1,5 +1,5 @@
 import sys
-from racunanje import Matrika, Operacije
+from racunanje import Matrika
 from matrika_input import VhodnaMatrika
 from bottle import route, run, request
 
@@ -22,26 +22,40 @@ def glavn_meni():
         ''')
         izbira = input('>')
         if izbira == '1':
+            m = input('Vnesi stevilo vrstic matrike: ')
+            n = input('Vnesi stevilo stolpcev matrike: ')
             print('Vnesi elemente matrike: ')
             a = VhodnaMatrika(m, n)
             a = Matrika(a)
             print (a.Transponiranje())
         if izbira == '2':
+            m = input('Vnesi stevilo vrstic matrike: ')
+            n = input('Vnesi stevilo stolpcev matrike: ')
             print('Vnesi elemente matrike: ')
             a = VhodnaMatrika(m, n)
+            a = Matrika(a)
             print (a.DeterminantaMatrike())
         if izbira == '3':
+            m = input('Vnesi stevilo vrstic matrike: ')
+            n = input('Vnesi stevilo stolpcev matrike: ')
             print('Vnesi elemente matrike: ')
             a = VhodnaMatrika(m, n)
+            a = Matrika(a)
             print (a.PrirejenkaMatrike())
         if izbira == '4':
+            m = input('Vnesi stevilo vrstic matrike: ')
+            n = input('Vnesi stevilo stolpcev matrike: ')
             print('Vnesi elemente matrike: ')
             a = VhodnaMatrika(m, n)
+            a = Matrika(a)
             print (a.InverzMatrike())
         if izbira == '5':
-            print('Vnesi elemente prve matrike: ')
+            m = input('Vnesi stevilo vrstic matrike: ')
+            n = input('Vnesi stevilo stolpcev matrike: ')
+            print('Vnesi elemente matrike: ')
             a = (VhodnaMatrika(m, n))
+            a = Matrika(a)
             print('Vnesi vrednost skalarja ')
-            skalar = input('> ')
-            print (MnozenjeSSkalarjem(a, skalar))
+            skalar = int(input('> '))
+            print (a.MnozenjeSSkalarjem(skalar))
 
