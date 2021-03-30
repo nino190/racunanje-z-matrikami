@@ -46,12 +46,6 @@ class Matrika:
         for i in range(len(self.matrika)):
             kopija.append(self.matrika[i])
         return kopija
-
-    def SledMatrike(self):
-        sled = 0
-        for i in range(len(self.matrika)):
-            sled += self.matrika[i][i]
-        return sled
         
     def Transponiranje(self):
         transponirana = []
@@ -110,17 +104,15 @@ class Matrika:
             prirejenka.Transponiranje()
             return prirejenka
 
-    def InverzMatrike(self, a):
+    def InverzMatrike(self):
 
-        a = Matrika(a)
-
-        if a.dim("vrs") != a.dim("sto"):
+        if self.matrika.dim("vrs") != self.matrika.dim("sto"):
             raise ArithmeticError("Matrika ni kvadratna zato nima inverza.")
 
-        if a.DeterminantaMatrike == 0:
+        if self.matrika.DeterminantaMatrike == 0:
             raise ZeroDivisionError("Determinanta matrike je enaka 0 zato matrika nima inverza")
                 
-        InverznaMatrika = a.PrirejenkaMatrike() / (a.DeterminantaMatrike())
+        InverznaMatrika = self.matrika.PrirejenkaMatrike() / (self.matrika.DeterminantaMatrike())
         InverznaMatrika = Matrika(InverznaMatrika)
         return InverznaMatrika
     
