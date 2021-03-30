@@ -4,7 +4,7 @@ from matrika_input import VhodnaMatrika
 from bottle import route, run, request
 
 
-def glavn_meni():
+def glavni_meni():
     while True:
         print('''
         Pozdravljeni v Matričnem kalkulatorju. Kaj bi radi naredili?
@@ -22,98 +22,131 @@ def glavn_meni():
         ''')
         izbira = input('>')
         if izbira == '1':
-            m = input('Vnesi stevilo vrstic matrike: ')
-            n = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            a = VhodnaMatrika(m, n)
-            a = Matrika(a)
-            print (a.Transponiranje())
+            Transponiraj()
         elif izbira == '2':
-            m = input('Vnesi stevilo vrstic matrike: ')
-            n = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            a = VhodnaMatrika(m, n)
-            a = Matrika(a)
-            print (a.DeterminantaMatrike())
+            Determinanta()
         elif izbira == '3':
-            m = input('Vnesi stevilo vrstic matrike: ')
-            n = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            a = VhodnaMatrika(m, n)
-            a = Matrika(a)
-            print (a.PrirejenkaMatrike())
+            Prirejenka()
         elif izbira == '4':
-            m = input('Vnesi stevilo vrstic matrike: ')
-            n = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            a = VhodnaMatrika(m, n)
-            a = Matrika(a)
-            print (a.InverzMatrike())
+            Inverzna()
         elif izbira == '5':
-            m = input('Vnesi stevilo vrstic matrike: ')
-            n = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            a = (VhodnaMatrika(m, n))
-            a = Matrika(a)
-            print('Vnesi vrednost skalarja ')
-            skalar = int(input('> '))
-            print (a.MnozenjeSSkalarjem(skalar))
+            SkalarnoMnozenje()
         elif izbira == '6':
-            print('Prva matrika: ')
-            m = input('Vnesi stevilo vrstic matrike: ')
-            n = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            a = VhodnaMatrika(m, n)
-            a = Matrika(a)
-            print('Druga matrika: ')
-            j = input('Vnesi stevilo vrstic matrike: ')
-            k = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            b = VhodnaMatrika(j, k)
-            b = Matrika(b)
-            print (b.SestevanjeMatrik())
+            Sestevanje()
         elif izbira == '7':
-            print('Prva matrika: ')
-            m = input('Vnesi stevilo vrstic matrike: ')
-            n = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            a = VhodnaMatrika(m, n)
-            a = Matrika(a)
-            print('Druga matrika: ')
-            j = input('Vnesi stevilo vrstic matrike: ')
-            k = input('Vnesi stevilo stolpcev matrike: ')
-            print('Vnesi elemente matrike: ')
-            b = VhodnaMatrika(j, k)
-            b = Matrika(b)
-            print (b.MnozenjeMatrik())
+            Mnozenje()
         elif izbira == '8':
-            n = input('Vnesi dimenzijo vektorja: ')
-            print('Vnesi elemente vektorja: ')
-            a = (VhodnaMatrika(1, n))
-            a = Matrika(a)
-            print (a.EnotskiVektor)
+            Enotski()
         elif izbira == '9':
-            print('Prvi vektor: ')
-            n = input('Vnesi dimenzijo vektorja: ')
-            print('Vnesi elemente vektorja: ')
-            a = VhodnaMatrika(1, n)
-            a = Matrika(a)
-            print('Drugi vektor: ')
-            k = input('Vnesi dimenzijo vektorja: ')
-            print('Vnesi elemente vektorja: ')
-            b = VhodnaMatrika(1, k)
-            b = Matrika(b)
-            print (b.SkalarniProdukt())
+            ProduktSkalarni()
         elif izbira == '10':
-            print('Prvi vektor: ')
-            print('Vnesi elemente tridimenzionalnega vektorja: ')
-            a = VhodnaMatrika(1, 3)
-            a = Matrika(a)
-            print('Drugi vektor: ')
-            print('Vnesi elemente tridimenzionalnega vektorja: ')
-            b = VhodnaMatrika(1, 3)
-            b = Matrika(b)
-            print (b.VektorskiProdukt())
+            ProduktVektorski()
         elif izbira == '11':
+            print ('Nasvidenje.')
             break
+        else:
+            print ('Neveljavna izbira')
+
+def Transponiraj():
+    m = input('Vnesi stevilo vrstic matrike: ')
+    n = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    a = VhodnaMatrika(m, n)
+    a = Matrika(a)
+    print (a.Transponiranje())
+
+def Determinanta():
+    m = input('Vnesi stevilo vrstic matrike: ')
+    n = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    a = VhodnaMatrika(m, n)
+    a = Matrika(a)
+    print (a.DeterminantaMatrike())
+
+def Prirejenka():
+    m = input('Vnesi stevilo vrstic matrike: ')
+    n = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    a = VhodnaMatrika(m, n)
+    a = Matrika(a)
+    print (a.PrirejenkaMatrike())
+
+def Inverzna():
+    m = input('Vnesi stevilo vrstic matrike: ')
+    n = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    a = VhodnaMatrika(m, n)
+    a = Matrika(a)
+    print (a.InverzMatrike())
+
+def SkalarnoMnozenje():
+    m = input('Vnesi stevilo vrstic matrike: ')
+    n = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    a = (VhodnaMatrika(m, n))
+    a = Matrika(a)
+    print('Vnesi vrednost skalarja ')
+    skalar = int(input('> '))
+    print (a.MnozenjeSSkalarjem(skalar))
+
+def Sestevanje():
+    print('Prva matrika: ')
+    m = input('Vnesi stevilo vrstic matrike: ')
+    n = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    a = VhodnaMatrika(m, n)
+    a = Matrika(a)
+    print('Druga matrika: ')
+    j = input('Vnesi stevilo vrstic matrike: ')
+    k = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    b = VhodnaMatrika(j, k)
+    b = Matrika(b)
+    print (b.SestevanjeMatrik())
+
+def Mnozenje():
+    print('Prva matrika: ')
+    m = input('Vnesi stevilo vrstic matrike: ')
+    n = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    a = VhodnaMatrika(m, n)
+    a = Matrika(a)
+    print('Druga matrika: ')
+    j = input('Vnesi stevilo vrstic matrike: ')
+    k = input('Vnesi stevilo stolpcev matrike: ')
+    print('Vnesi elemente matrike: ')
+    b = VhodnaMatrika(j, k)
+    b = Matrika(b)
+    print (b.MnozenjeMatrik())
+
+def Enotski():
+    n = input('Vnesi dimenzijo vektorja: ')
+    print('Vnesi elemente vektorja: ')
+    a = (VhodnaMatrika(1, n))
+    a = Matrika(a)
+    print (a.EnotskiVektor)
+
+def ProduktSkalarni():
+    print('Prvi vektor: ')
+    n = input('Vnesi dimenzijo vektorja: ')
+    print('Vnesi elemente vektorja: ')
+    a = VhodnaMatrika(1, n)
+    a = Matrika(a)
+    print('Drugi vektor: ')
+    k = input('Vnesi dimenzijo vektorja: ')
+    print('Vnesi elemente vektorja: ')
+    b = VhodnaMatrika(1, k)
+    b = Matrika(b)
+    print (b.SkalarniProdukt())
+
+def ProduktVektorski():
+    print('Prvi vektor: ')
+    print('Vnesi elemente tridimenzionalnega vektorja: ')
+    a = VhodnaMatrika(1, 3)
+    a = Matrika(a)
+    print('Drugi vektor: ')
+    print('Vnesi elemente tridimenzionalnega vektorja: ')
+    b = VhodnaMatrika(1, 3)
+    b = Matrika(b)
+    print (b.VektorskiProdukt())
 
