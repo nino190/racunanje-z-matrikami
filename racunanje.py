@@ -179,7 +179,7 @@ class Matrika:
         
     
 
-    def SkalaraniProdukt(self):
+    def SkalarniProdukt(self):
 
         v1 = self.matrika
         v2 = self.matrika2
