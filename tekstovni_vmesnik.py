@@ -1,5 +1,5 @@
 import sys
-from racunanje import DeterminantaMatrike, kofaktor, PrirejenkaMatrike, InverzMatrike, EnotskiVektor, Matrika, Operacije
+from racunanje import DeterminantaMatrike, kofaktor, PrirejenkaMatrike, InverzMatrike, EnotskiVektor, print_matrix, Matrika, Operacije
 from matrika_input import VhodnaMatrika
 from bottle import route, run, request
 
@@ -52,7 +52,7 @@ def Transponiraj():
     print('Vnesi elemente matrike: ')
     a = VhodnaMatrika(m, n)
     a = a.vhodna
-    print (Matrika(a).Transponiranje())
+    print_matrix(Matrika(a).Transponiranje())
 
 def Determinanta():
     m = input('Vnesi stevilo vrstic matrike: ')
@@ -60,7 +60,7 @@ def Determinanta():
     print('Vnesi elemente matrike: ')
     a = VhodnaMatrika(m, n)
     a = a.vhodna
-    print (DeterminantaMatrike(a))
+    print_matrix(DeterminantaMatrike(a))
 
 def Prirejenka():
     m = input('Vnesi stevilo vrstic matrike: ')
@@ -68,7 +68,7 @@ def Prirejenka():
     print('Vnesi elemente matrike: ')
     a = VhodnaMatrika(m, n)
     a = a.vhodna
-    print (PrirejenkaMatrike(a))
+    print_matrix(PrirejenkaMatrike(a))
 
 def Inverzna():
     m = input('Vnesi stevilo vrstic matrike: ')
@@ -76,7 +76,7 @@ def Inverzna():
     print('Vnesi elemente matrike: ')
     a = VhodnaMatrika(m, n)
     a = a.vhodna
-    print (InverzMatrike(a))
+    print_matrix(InverzMatrike(a))
 
 def SkalarnoMnozenje():
     m = input('Vnesi stevilo vrstic matrike: ')
@@ -86,7 +86,7 @@ def SkalarnoMnozenje():
     a = a.vhodna
     print('Vnesi vrednost skalarja ')
     skalar = int(input('> '))
-    print (Operacije().MnozenjeSSkalarjem(Matrika(a), skalar))
+    print_matrix(Operacije().MnozenjeSSkalarjem(Matrika(a), skalar))
 
 def Sestevanje():
     print('Prva matrika: ')
@@ -101,7 +101,7 @@ def Sestevanje():
     print('Vnesi elemente matrike: ')
     b = VhodnaMatrika(j, k)
     b = b.vhodna
-    print (Operacije.SestevanjeMatrik(Matrika(a), Matrika(b)))
+    print_matrix(Operacije.SestevanjeMatrik(Matrika(a), Matrika(b)))
 
 def Mnozenje():
     print('Prva matrika: ')
@@ -116,14 +116,14 @@ def Mnozenje():
     print('Vnesi elemente matrike: ')
     b = VhodnaMatrika(j, k)
     b = b.vhodna
-    print (Operacije.MnozenjeMatrik(Matrika(a), Matrika(b)))
+    print_matrix(Operacije.MnozenjeMatrik(Matrika(a), Matrika(b)))
 
 def Enotski():
     n = input('Vnesi dimenzijo vektorja: ')
     print('Vnesi elemente vektorja: ')
     a = VhodnaMatrika(1, n)
     a = a.vhodna
-    print (EnotskiVektor(Matrika(a)))
+    print_matrix(EnotskiVektor(Matrika(a)))
 
 def ProduktSkalarni():
     print('Prvi vektor: ')
@@ -136,7 +136,7 @@ def ProduktSkalarni():
     print('Vnesi elemente vektorja: ')
     b = VhodnaMatrika(1, k)
     b = b.vhodna
-    print (Operacije().SkalarniProdukt(Matrika(a), Matrika(b)))
+    print_matrix(Operacije().SkalarniProdukt(Matrika(a), Matrika(b)))
 
 def ProduktVektorski():
     print('Prvi vektor: ')
@@ -147,6 +147,6 @@ def ProduktVektorski():
     print('Vnesi elemente tridimenzionalnega vektorja: ')
     b = VhodnaMatrika(1, 3)
     b = b.vhodna
-    print (Operacije.VektorskiProdukt(Matrika(a), Matrika(b)))
+    print_matrix(Operacije.VektorskiProdukt(Matrika(a), Matrika(b)))
 
 glavni_meni()
