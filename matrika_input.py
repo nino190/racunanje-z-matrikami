@@ -4,13 +4,13 @@ class VhodnaMatrika():
     
     def __init__(self, vrstice, stolpci):
 
-        self.vrs = vrstice
-        self.sto = stolpci
+        self.vrs = int(vrstice)
+        self.sto = int(stolpci)
         self.vhodna = []
 
-        for i in range (self.vrs):
+        for i in range (1, self.vrs + 1):
             vrstica = []
-            for j in range (self.sto):
+            for j in range (1, self.sto + 1):
 
                 print ('Vnesi (' + str(i) + ', ' + str(j) + ') - ti element matrike: ')
                 x = input ('> ')

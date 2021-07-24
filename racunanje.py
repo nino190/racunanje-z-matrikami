@@ -1,9 +1,7 @@
 class Matrika:
 
-    def __init__(self, matrika, matrika2 = []):
+    def __init__(self, matrika):
         self.matrika = matrika
-        self.matrika2 = matrika2
-
     
     def dim(self, dimenzija):
         if dimenzija == "vrs":
@@ -41,7 +39,7 @@ class Matrika:
         return m
 
     def element(self, vrs, sto):
-        return Matrika(self.matrika).vrstica(vrs)[sto-1]
+        return int(Matrika(self.matrika).vrstica(vrs)[sto-1])
 
     def KopijaMatrike(self):
         kopija = []
@@ -55,134 +53,142 @@ class Matrika:
             transponirana.append(Matrika(self.matrika).stolpec(i))
         return transponirana
 
-    def DeterminantaMatrike(self, determinanta = 0):
+    def v_slovar(self):
 
-        indeksi = list(range(self.matrika.dim("vrs")))
+            if self.matrika2 != [] and self.ime2 != "":
+                return {
+                    str(self.ime) : self.matrika,
+                    str(self.ime2) : self.matrika2
+                }
+            else:
+                return {
+                    str(self.ime) : self.matrika
+                }
 
-        if self.matrika.dim("vrs") == self.matrika.dim("sto"):
-            if self.matrika.dim("vrs") == 2:
-                mala = self.matrika.element(1, 1) * self.matrika.element(2, 2) - self.matrika.element(2, 1) * self.matrika.element(1, 2)
-                return mala
+def DeterminantaMatrike(a):
 
-            for i in indeksi:
-                minor = self.matrika.KopijaMatrike()
-                minor.zbrisi_vrstico(1)
-                SteviloVrstic = len(minor)
-        
-                for j in range(SteviloVrstic): 
-                    minor[j] = minor[j][0:i] + minor[j][i + 1:]
-        
-                kofaktor = (-1) ** (i % 2) * minor.DeterminantaMatrike()
-                determinanta += self.matrika[0][i] * kofaktor
-            return determinanta
-        else:
-            raise ArithmeticError("Determinanta ne obstaja ker matrika ni kvadratna")
-
-    def kofaktor(self, vrs, sto):
-
-        kofaktor = 0
-        a = self.matrika.KopijaMatrike()
-        a.zbrisi_vrstico(vrs)
-        a.zbrisi_stolpec(sto)
-        kofaktor = a.DeterminantaMatrike
-        return kofaktor
-
-    def PrirejenkaMatrike(self):
-
-        if self.matrika.dim("vrs") != self.matrika.dim("sto"):
-                raise ArithmeticError("Prirejenka ne obstaja")
-                
-        else:
-            prirejenka = []
-            a = self.matrika.KopijaMatrike()
-
-            for i in range (self.matrika.dim("vrs")):
-                vrstica = []
-                for j in range (self.matrika.dim("sto")):
-                    vrstica.append(a.kofaktor(i, j))
-                prirejenka.append(vrstica)
-                
-            prirejenka = Matrika(prirejenka)
-            prirejenka.Transponiranje()
-            return prirejenka
-
-    def InverzMatrike(self):
-
-        if self.matrika.dim("vrs") != self.matrika.dim("sto"):
-            raise ArithmeticError("Matrika ni kvadratna zato nima inverza.")
-
-        if self.matrika.DeterminantaMatrike == 0:
-            raise ZeroDivisionError("Determinanta matrike je enaka 0 zato matrika nima inverza")
-                
-        InverznaMatrika = self.matrika.PrirejenkaMatrike() / (self.matrika.DeterminantaMatrike())
-        InverznaMatrika = Matrika(InverznaMatrika)
-        return InverznaMatrika
+    indeksi = list(range(Matrika(a).dim("vrs")))
     
-#########################################################################################
-#########################################################################################
-#########################################################################################
+    determinanta = 0
+    
+    if Matrika(a).dim("vrs") == Matrika(a).dim("sto"):
+        if Matrika(a).dim("vrs") == 2:
+            mala = Matrika(a).element(1, 1) * Matrika(a).element(2, 2) - Matrika(a).element(2, 1) * Matrika(a).element(1, 2)
+            return mala
 
-    def MnozenjeSSkalarjem(self, skalar):
+        for i in indeksi:
+            minor = Matrika(a).KopijaMatrike()
+            minor.zbrisi_vrstico(1)
+            SteviloVrstic = len(minor)
+    
+            for j in range(SteviloVrstic): 
+                minor[j] = minor[j][0:i] + minor[j][i + 1:]
+    
+            kofaktor = (-1) ** (i % 2) * minor.DeterminantaMatrike()
+            determinanta += a[0][i] * kofaktor
+        return determinanta
+    else:
+        raise ArithmeticError("Determinanta ne obstaja ker matrika ni kvadratna")
 
-        nova = []
+def kofaktor(a, vrs, sto):
 
-        for i in range (self.matrika.dim("vrs")):
-            z = 0
-            for j in range (self.matrika.dim("sto")):
-                z += self.matrika[i][j] * skalar
-            nova.append(z)
-        return nova
+    kofaktor = 0
+    a = Matrika(a).KopijaMatrike()
+    a.zbrisi_vrstico(vrs)
+    a.zbrisi_stolpec(sto)
+    kofaktor = Matrika(a).DeterminantaMatrike
+    return kofaktor
 
-    def SestevanjeMatrik(self):
-        sestevek = []
-        for i in range (self.matrika.dim("vrs")):
+def PrirejenkaMatrike(a):
+
+    if Matrika(a).dim("vrs") != Matrika(a).dim("sto"):
+            raise ArithmeticError("Prirejenka ne obstaja")
+            
+    else:
+        prirejenka = []
+        b = Matrika(a).KopijaMatrike()
+
+        for i in range (Matrika(a).dim("vrs")):
             vrstica = []
-            for j in range (self.matrika.dim("sto")):
-                vrstica.append(self.matrika[i][j] + self.matrika2[i][j])
-            sestevek.append(vrstica)
+            for j in range (Matrika(a).dim("sto")):
+                vrstica.append(b.kofaktor(i, j))
+            prirejenka.append(vrstica)
+            
+        prirejenka = Matrika(prirejenka)
+        prirejenka.Transponiranje()
+        return prirejenka
+
+def InverzMatrike(a):
+
+    if Matrika(a).dim("vrs") != Matrika(a).dim("sto"):
+        raise ArithmeticError("Matrika ni kvadratna zato nima inverza.")
+
+    if Matrika(a).DeterminantaMatrike == 0:
+        raise ZeroDivisionError("Determinanta matrike je enaka 0 zato matrika nima inverza")
+            
+    InverznaMatrika = PrirejenkaMatrike(a) / (DeterminantaMatrike(a))
+    InverznaMatrika = Matrika(InverznaMatrika)
+    return InverznaMatrika
+
+def EnotskiVektor(a):
+
+    if  Matrika(a).dim("vrs") > 1 and Matrika(a).dim("sto") > 1:
+        raise ArithmeticError("Vektor mora biti ali ena vrstica ali en stolpec")
+    
+    norma = 0
+    for i in range(Matrika(a).dim("vrs")):
+        for j in range(Matrika(a).dim("sto")):
+            norma += Matrika(a).element(i, j) ** 2
+    
+    norma = norma ** 0.5
+    EnotskiVektor = Matrika(a).KopijaMatrike()
+
+    for i in range (Matrika(a).dim("vrs")):
+        for j in range (Matrika(a).dim("sto")):
+            EnotskiVektor[i][j] = EnotskiVektor[i][j] / norma
+        
+    return EnotskiVektor
+
+#########################################################################################
+#########################################################################################
+#########################################################################################
+
+class Operacije():
+
+    def MnozenjeSSkalarjem(self, a, skalar):
+
+        return [[element * skalar for element in vrstica] for vrstica in a]
+
+
+    def SestevanjeMatrik(self, a, b):
+        assert Matrika(a).dim("vrs") == Matrika(b).dim("vrs") and Matrika(a).dim("sto") == Matrika(b).dim("sto")
+        sestevek = []
+        for vrs_a, vrs_b in zip(a, b):
+            sestevek.append([x + y for x, y in zip(vrs_a, vrs_b)])
         return sestevek
 
-    def MnozenjeMatrik(self):
+    def MnozenjeMatrik(self, a, b):
         zmnozek = []
 
-        if self.matrika.dim("vrs") == self.matrika2.dim("sto"):
-            for i in range (self.matrika.dim("vrs")):
+        if Matrika(a).dim("vrs") == Matrika(b).dim("sto"):
+            for i in range (Matrika(a).dim("vrs")):
                 vrstica = []
-                for j in range (self.matrika2.dim("sto")):
+                for j in range (Matrika(b).dim("sto")):
                     x = 0
-                    for k in range (self.matrika.dim("vrs")):
-                        x += self.matrika[i][k] * self.matrika2[k][j]
+                    for k in range (Matrika(a).dim("vrs")):
+                        x += a[i][k] * b[k][j]
                     vrstica.append(x)
                 zmnozek.append(vrstica)
             return zmnozek
         else:
             raise ArithmeticError("Matriki ni mogoce zmnoziti." )
         
-    def EnotskiVektor(self):
 
-        if  self.matrika.dim("vrs") > 1 and self.matrika.dim("sto") > 1:
-            raise ArithmeticError("Vektor mora biti ali ena vrstica ali en stolpec")
-        
-        norma = 0
-        for i in range(self.matrika.dim("vrs")):
-            for j in range(self.matrika.dim("sto")):
-                norma += self.matrika.element(i, j) ** 2
-        
-        norma = norma ** 0.5
-        EnotskiVektor = self.matrika.KopijaMatrike()
 
-        for i in range (self.matrika.dim("vrs")):
-            for j in range (self.matrika.dim("sto")):
-                EnotskiVektor[i][j] = EnotskiVektor[i][j] / norma
-            
-        return EnotskiVektor
-        
-    
+    def SkalarniProdukt(self, v1, v2):
 
-    def SkalarniProdukt(self):
-
-        v1 = self.matrika
-        v2 = self.matrika2
+        v1 = Matrika(v1)
+        v2 = Matrika(v2)
 
         if (v1.dim("vrs") > 1 and v1.dim("sto") > 1) or (v2.dim("vrs") > 1 and v2.dim("sto") > 1):
             raise ArithmeticError("Vektor mora biti ali ena vrstica ali en stolpec")
@@ -205,20 +211,18 @@ class Matrika:
                 skalarni += v1[i][0] * v2[0][i] 
 
         elif v1.dim("sto") == 1 and v2.dim("sto") == 1 and v1.dim("vrs") == v2.dim("vrs"):
-            v1 = v1.Transponiranje()
+            v1 = Matrika(v1.Transponiranje())
             v2 = v2.Transponiranje()
-            skalarni += v1[i][0] * v2[i][0] 
+            for i in range (v1.dim("sto")):
+                skalarni += v1[i][0] * v2[i][0] 
         return skalarni
 
-    def VektorskiProdukt(self):
+    def VektorskiProdukt(self, vektor1, vektor2):
 
-        vektor1 = self.matrika
-        vektor2 = self.matrika2
-
-        v1 = vektor1.dim("vrs")
-        s1 = vektor1.dim("sto")
-        v2 = vektor2.dim("vrs")
-        s2 = vektor2.dim("sto")
+        v1 = Matrika(vektor1).dim("vrs")
+        s1 = Matrika(vektor1).dim("sto")
+        v2 = Matrika(vektor2).dim("vrs")
+        s2 = Matrika(vektor2).dim("sto")
         koeficienti = []
         produkt = [] 
         prvi = 0
@@ -231,14 +235,14 @@ class Matrika:
                 pass
 
             elif v1 == 1 and v2 == 3:
-                vektor2 = vektor2.Transponiranje()
+                vektor2 = Matrika(vektor2).Transponiranje()
             
             elif v1 == 3 and v2 == 1:
-                vektor1 = vektor1.Transponiranje()
+                vektor1 = Matrika(vektor1).Transponiranje()
             
             elif v1 == 3 and v2 == 3:
-                vektor1 = vektor1.Transponiranje()
-                vektor2 = vektor2.Transponiranje()
+                vektor1 = Matrika(vektor1).Transponiranje()
+                vektor2 = Matrika(vektor2).Transponiranje()
                 
             prvi = vektor1[0][1] * vektor2[0][2] - vektor1[0][2] * vektor2[0][1]
             drugi = vektor1[0][2] * vektor2[0][0] - vektor1[0][0] * vektor2[0][2]
@@ -249,6 +253,8 @@ class Matrika:
             koeficienti.append(tretji)
             produkt.append(koeficienti)
             return produkt
+    
+    
 
 def print_matrix(a):
     
