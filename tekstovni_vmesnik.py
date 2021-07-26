@@ -201,7 +201,4 @@ def Prikaz(seznam):
         print (f'{oznaka}')
         print_matrix(matrika)
 
-with open('stanje.json', 'w') as file:
-    json.dump(shranjene, file, ensure_ascii=False)
-
 glavni_meni()
