@@ -1,0 +1,57 @@
+<!doctype html>
+<title>Example</title>
+<style>
+* {
+  box-sizing: border-box; 
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+#main {
+  display: flex;
+  flex: 1;
+}
+#main > article {
+  flex: 1;
+}
+#main > nav {
+  flex: 0 0 20vw;
+  background: beige;
+}
+#main > nav {
+  order: -1;
+}
+header{
+  background: yellowgreen;
+  height: 20vh;
+}
+header, article, nav {
+  padding: 1em;
+}
+</style>
+<body>
+  <header>Matrični kalkulator</header>
+  <div id="main">
+    <article><br>
+      <h1>Enotski vektor</h1>
+      Enotski vektor je vektor v normiranem vektorskem prostoru z dolžino 1. Ponavadi se označuje s "e".
+    </article>
+    <nav>Glavni meni: <br>
+    <a href="transponiranje.html">Transponirana matrika</a><br>
+    <a href="determinanta.html">Determinanta matrike</a><br>
+    <a href="inverz.html">Inverz matrike</a><br>
+    <a href="prirejenka.html">Prirejenka matrike</a><br>
+    <a href="mnozenje-s-skalarjem.html">Množenje s skalarjem</a><br>
+    <a href="sestevanje.html">Seštevanje Matrik</a><br>
+    <a href="mnozenje.html">Množenje matrik</a><br>
+    <a href="enotski.html">Enotski vektor</a><br>
+    <a href="skalarni.html">Skalarni Produkt</a><br>
+    <a href="vektorski.html">Vektorski produkt</a><br>
+    <a href="pregled.html">Shranjene matrike</a><br>
+    </nav>
+  </div>
+
+</body>

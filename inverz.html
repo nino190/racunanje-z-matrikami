@@ -1,0 +1,65 @@
+<!doctype html>
+<title>Example</title>
+<style>
+* {
+  box-sizing: border-box; 
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+#main {
+  display: flex;
+  flex: 1;
+}
+#main > article {
+  flex: 1;
+}
+#main > nav {
+  flex: 0 0 20vw;
+  background: beige;
+}
+#main > nav {
+  order: -1;
+}
+header{
+  background: yellowgreen;
+  height: 20vh;
+}
+header, article, nav {
+  padding: 1em;
+}
+</style>
+<body>
+  <header>Matrični kalkulator</header>
+  <div id="main">
+    <article><br>
+      <h1>Inverzna matrika</h1>
+      '''Obratna matrika''' (oznaka <math>A<sup>-1</sup></math> za matriko <math>A</math>) (tudi inverzna matrika ali nesingularna matrika oziroma nedegenerirana) neke kvadratne matrike<math>A</math> je takšna matrika, ki pri množenju z matriko <math>A</math> daje enotsko matriko: <br>
+      <math> A X A<sup>-1</sup> = I</math> <br>
+
+kjer je: <br>
+      <ul>
+        <li><math>I</math> enotska matrika reda ''n'' (razsežnosti <math>n X n</math>)</li>
+        <li><math>A<sup>-1</sup></math> obratna matrika matrike <math>A</math>.</li>
+      </ul>
+    	Za več podrobnosti si lahko preberete na <a href = "https://sl.wikipedia.org/wiki/Obratna_matrika">wikipediji</a>.<br>
+    </article>
+    <nav>Glavni meni: <br>
+    <a href="transponiranje.html">Transponirana matrika</a><br>
+    <a href="determinanta.html">Determinanta matrike</a><br>
+    <a href="inverz.html">Inverz matrike</a><br>    
+    <a href="prirejenka.html">Prirejenka matrike</a><br>
+    <a href="mnozenje-s-skalarjem.html">Množenje s skalarjem</a><br>
+    <a href="sestevanje.html">Seštevanje Matrik</a><br>
+    <a href="mnozenje.html">Množenje matrik</a><br>
+    <a href="enotski.html">Enotski vektor</a><br>
+    <a href="skalarni.html">Skalarni Produkt</a><br>
+    <a href="vektorski.html">Vektorski produkt</a><br>
+    <a href="pregled.html">Shranjene matrike</a><br>
+    </nav>
+  </div>
+
+</body>

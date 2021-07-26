@@ -1,5 +1,10 @@
 from racunanje import Matrika
 
+def vnesi(i, j):
+    print ('Vnesi (' + str(i) + ', ' + str(j) + ') - ti element matrike: ')
+    x = input ('> ')
+    return x
+
 class VhodnaMatrika():
     
     def __init__(self, vrstice, stolpci):
@@ -12,8 +17,11 @@ class VhodnaMatrika():
             vrstica = []
             for j in range (1, self.sto + 1):
 
-                print ('Vnesi (' + str(i) + ', ' + str(j) + ') - ti element matrike: ')
-                x = input ('> ')
+                x = vnesi(i, j)
+                while x is not float:
+                    print('To ni število. Prosim vnesi število.')
+                    x = vnesi(i, j)
+                
                 vrstica.append(x)
 
             self.vhodna.append(vrstica)

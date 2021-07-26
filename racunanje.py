@@ -53,18 +53,6 @@ class Matrika:
             transponirana.append(Matrika(self.matrika).stolpec(i))
         return transponirana
 
-    def v_slovar(self):
-
-            if self.matrika2 != [] and self.ime2 != "":
-                return {
-                    str(self.ime) : self.matrika,
-                    str(self.ime2) : self.matrika2
-                }
-            else:
-                return {
-                    str(self.ime) : self.matrika
-                }
-
 def DeterminantaMatrike(a):
 
     indeksi = list(range(Matrika(a).dim("vrs")))
@@ -253,8 +241,6 @@ class Operacije():
             koeficienti.append(tretji)
             produkt.append(koeficienti)
             return produkt
-    
-    
 
 def print_matrix(a):
     
