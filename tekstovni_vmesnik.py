@@ -1,8 +1,5 @@
-import sys
-import json
 from racunanje import DeterminantaMatrike, kofaktor, PrirejenkaMatrike, InverzMatrike, EnotskiVektor, print_matrix, Matrika, Operacije
 from matrika_input import VhodnaMatrika
-from bottle import route, run, request
 
 shranjene = []
 

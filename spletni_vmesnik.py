@@ -1,11 +1,12 @@
-from racunanje import DeterminantaMatrike, kofaktor, PrirejenkaMatrike, InverzMatrike, EnotskiVektor, print_matrix, Matrika, Operacije
-from matrika_input import VhodnaMatrika
-from bottle import route, run, request
 from tekstovni_vmesnik import Prikaz, shranjene, Transponiraj, Determinanta, Inverzna, Prirejenka, SkalarnoMnozenje, Sestevanje, Mnozenje, Enotski, ProduktSkalarni, ProduktVektorski, Prikaz
 import bottle
 
 @bottle.get('/')
 def meni():
+    bottle.redirect('/prvastran/')
+
+@bottle.get('/prva-stran/')
+def prvastran():
     return bottle.template('prva-stran.html')
 
 @bottle.get('/transponiranje/')
@@ -95,3 +96,5 @@ def zgo():
 @bottle.post('/zgodovina/')
 def zgo2():
     Prikaz(shranjene)
+
+bottle.run(debug=True, reloader=True)
