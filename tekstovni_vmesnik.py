@@ -1,4 +1,4 @@
-from racunanje import DeterminantaMatrike, kofaktor, PrirejenkaMatrike, InverzMatrike, EnotskiVektor, print_matrix, Matrika, Operacije
+from racunanje import *
 from matrika_input import VhodnaMatrika
 
 shranjene = []
@@ -67,7 +67,7 @@ def Determinanta():
     a = a.vhodna
     shranjene.append((ime, Matrika(a)))
     shranjene.append((f"determinanta {ime}", DeterminantaMatrike(a)))
-    print_matrix(DeterminantaMatrike(a))
+    print(f"determinanta matrike {ime} je {DeterminantaMatrike(a)}")
 
 def Prirejenka():
     ime = input('Vnesi ime matrike: ')
@@ -174,7 +174,7 @@ def ProduktSkalarni():
     shranjene.append(ime2, Matrika(b))
     x = Operacije().SkalarniProdukt(Matrika(a), Matrika(b))
     shranjene.append((f"skalarni produkt vektorjev {ime} in {ime2}", x))
-    print_matrix(x)
+    print(f"Skalarni produkt {ime} je {x}")
 
 def ProduktVektorski():
     print('Prvi vektor: ')
@@ -198,4 +198,5 @@ def Prikaz(seznam):
         print (f'{oznaka}')
         print_matrix(matrika)
 
-glavni_meni()
+if __name__ == "__main__":
+    glavni_meni()

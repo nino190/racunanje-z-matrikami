@@ -18,9 +18,9 @@ class VhodnaMatrika():
             for j in range (1, self.sto + 1):
 
                 x = vnesi(i, j)
-                while x is not float:
-                    print('To ni število. Prosim vnesi število.')
-                    x = vnesi(i, j)
+                if not x.isdigit():
+                    print("To ni število.")
+                    x = vnesi(i,j)
                 
                 vrstica.append(x)
 

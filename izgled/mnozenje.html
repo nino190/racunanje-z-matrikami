@@ -1,0 +1,70 @@
+<!doctype html>
+<title>Example</title>
+<style>
+* {
+  box-sizing: border-box; 
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+#main {
+  display: flex;
+  flex: 1;
+}
+#main > article {
+  flex: 1;
+}
+#main > nav {
+  flex: 0 0 20vw;
+  background: beige;
+}
+#main > nav {
+  order: -1;
+}
+header{
+  background: yellowgreen;
+  height: 20vh;
+}
+header, article, nav {
+  padding: 1em;
+}
+</style>
+<body>
+  <header>Matrični kalkulator</header>
+  <div id="main">
+    <article><br>
+      <h1>Množenje matrik</h1>
+      Množenje dveh matrik je izvedljivo le, če je število stolpcev prve matrike enako številu vrstic druge matrike. Če je A matrika razsežnosti m X n in je B matrika razsežnosti n X p, potem je njun produkt AB matrika razsežnosti m X p definiran kot: <br>
+
+	(AB)(i, j) = A(i, 1) * B(1, j) + A(i, 2) * B(2, j) + ... + A(i, n) * B(n, j)<br>
+     za vsak par (i, j).
+     <form action='mnozenje' method='post'>
+      <input type='text' name='ime1' placeholder='ime matrike 1'>
+      <input type='text' name='matrika1' placeholder='matrika 1'>
+      <input type='text' name='ime2' placeholder='ime matrike 2'>
+      <input type='text' name='matrika2' placeholder='matrika 2'>
+
+      <div class='control'>
+        <input type="submit" class="button is-small" value="izračunaj">
+      </div>
+    </form>
+    </article>
+    <nav>Glavni meni: <br>
+      <a href="../transponiranje">Transponirana matrika</a><br>
+      <a href="../determinanta">Determinanta matrike</a><br>
+      <a href="../inverz">Inverz matrike</a><br>
+      <a href="../prirejenka">Prirejenka matrike</a><br>
+      <a href="../skalarno-mnozenje">Množenje s skalarjem</a><br>
+      <a href="../sestevanje">Seštevanje Matrik</a><br>
+      <a href="../mnozenje">Množenje matrik</a><br>
+      <a href="../enotski">Enotski vektor</a><br>
+      <a href="../skalarni">Skalarni Produkt</a><br>
+      <a href="../vektorski">Vektorski produkt</a><br>
+      <a href="../pregled">Shranjene matrike</a><br>
+    </nav>
+  </div>
+
+</body>
